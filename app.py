@@ -4,15 +4,8 @@ import pandas as pd
 import requests
 from patsy import dmatrices
 
-
 movies = pickle.load(open('movies.pkl','rb'))
-
 similarity = pickle.load(open('similarity.pkl','rb'))
-
-
-
-
-
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
@@ -21,8 +14,6 @@ def fetch_poster(movie_id):
     poster_path = data['poster_path']
     full_path = "https://image.tmdb.org/t/p/w300/" + poster_path
     return full_path
-
-
 
 def recommend(movie):
     movie_index = movies[movies['title']==movie].index[0]
@@ -37,9 +28,7 @@ def recommend(movie):
         recommended_movies.append(movies.iloc[i[0]].title)
     return recommended_movies,recommended_poster
 
-
 app = Flask(__name__)
-
 
 @app.route("/", methods=["GET","POST"])
 def home():
@@ -62,7 +51,5 @@ def home():
     else:
         return render_template("index.html", movie_list = movie_list, status = status)
     
-
-
 if __name__ == '__main__':
     app.run(debug=True)
