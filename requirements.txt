@@ -1,6 +1,6 @@
 Flask
 pandas
 patsy
-pickle-mixin
+pickle5
 requests
 gunicorn
