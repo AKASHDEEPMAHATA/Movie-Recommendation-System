@@ -3,3 +3,4 @@ pandas==1.5.3
 patsy==0.5.3
 pickle-mixin==1.0.2
 requests==2.28.2
+gunicorn
